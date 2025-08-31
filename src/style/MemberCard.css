@@ -1,0 +1,25 @@
+.memberCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(106, 192, 192, 0.543);
+}
+
+#avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: rgba(84, 57, 57, 0.516);
+  color: white;
+}
+
+#information {
+  width: 8em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
