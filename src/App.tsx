@@ -9,7 +9,7 @@ import Tasks from "./components/Tasks.tsx";
 import TaskCard from "./components/TaskCard.tsx";
 import Footer from "./components/Footer.tsx";
 import "./App.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 function App() {
   const MessagesList = ["Hello world", "Have a nice day", "Be heppy"];
