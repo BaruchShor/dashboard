@@ -9,17 +9,34 @@ import Tasks from "./components/Tasks.tsx";
 import TaskCard from "./components/TaskCard.tsx";
 import Footer from "./components/Footer.tsx";
 import "./App.css";
+import { useState, useRef } from "react";
 
 function App() {
   const MessagesList = ["Hello world", "Have a nice day", "Be heppy"];
   const membersList = [
-    { name: "Hershi Shor", role: "admin", isActive: true },
-    { name: "Esti Shor", role: "user", isActive: true },
-    { name: "Dovi Shor", role: "guest", isActive: true },
+    {
+      name: "Hershi Shor",
+      role: "admin",
+      isActive: true,
+      tasks: ["to done", "to go"],
+    },
+    {
+      name: "Esti Shor",
+      role: "user",
+      isActive: true,
+      tasks: ["to do", "to done", "to go"],
+    },
+    { name: "Dovi Shor", role: "guest", isActive: true, tasks: ["to go"] },
   ];
+
+  const [tasks, setTasks] = useState<string[]>([]);
+
+  const addMemberTasks = (memberTasks: string[]): void => {
+    setTasks([...memberTasks]);
+  };
   return (
     <>
-      <Header headerText="Wellcome To Fucking Dashboard Pages" />
+      <Header headerText="Campus Club Dashboard" />
       <Dashboard>
         <Messages>
           {MessagesList.map((message) => {
@@ -33,13 +50,16 @@ function App() {
                 name={member.name}
                 role={member.role}
                 isActive={member.isActive}
+                tasks={member.tasks}
+                showTasks={addMemberTasks}
               />
             );
           })}
         </Members>
         <Tasks>
-          <TaskCard task="To do" />
-          <TaskCard task="Done" />
+          {tasks.map((task, index) => {
+            return <TaskCard key={index} task={task} />;
+          })}
         </Tasks>
       </Dashboard>
       <Footer footerText="Good by" />
